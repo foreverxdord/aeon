@@ -118,7 +118,7 @@ jobs:
 
       - name: Install Claude Code
         if: steps.work.outputs.mode != ''
-        run: npm install -g @anthropic-ai/claude-code
+        run: npm install -g @anthropic-ai/claude-code@2.1.79
 
       - name: Validate skill secrets
         if: steps.work.outputs.mode != ''
