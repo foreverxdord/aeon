@@ -1,0 +1,36 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "heartbeat"
+      },
+      "children": [
+        "alert",
+        "text1",
+        "text2"
+      ]
+    },
+    "alert": {
+      "type": "Alert",
+      "props": {
+        "type": "error",
+        "message": "DEGRADED: heartbeat failed 3 times consecutively (0% success rate)"
+      }
+    },
+    "text1": {
+      "type": "Text",
+      "props": {
+        "text": "Status page updated"
+      }
+    },
+    "text2": {
+      "type": "Text",
+      "props": {
+        "text": "No open PRs or urgent issues"
+      }
+    }
+  }
+}
