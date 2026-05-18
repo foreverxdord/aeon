@@ -209,7 +209,7 @@ model: claude-sonnet-4-6
 # provider: direct (default, uses ANTHROPIC_API_KEY) | bankr (uses BANKR_LLM_KEY) | custom (uses CUSTOM_BASE_URL + CUSTOM_API_KEY)
 gateway:
   provider: custom
-  base_url: https://open.bigmodel.cn/api/coding/paas/v4
+  base_url: https://open.bigmodel.cn/api/anthropic
 
 # Output channels
 channels:

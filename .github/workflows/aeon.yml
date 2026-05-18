@@ -257,14 +257,16 @@ jobs:
               echo "::error::gateway.provider=custom but CUSTOM_BASE_URL secret and gateway.base_url in aeon.yml are both empty"
               exit 1
             fi
-            KEY="${CUSTOM_API_KEY:-${ANTTHROPIC_API_KEY:-}}"
+            KEY="${CUSTOM_API_KEY:-${ANTHROPIC_API_KEY:-}}"
             if [ -z "$KEY" ]; then
               echo "::error::gateway.provider=custom but no API key found (set CUSTOM_API_KEY or ANTHROPIC_API_KEY)"
               exit 1
             fi
             export ANTHROPIC_BASE_URL="$BASE"
-            export ANTHROPIC_API_KEY="$KEY"
+            export ANTHROPIC_AUTH_TOKEN="$KEY"
+            unset ANTHROPIC_API_KEY
             unset CLAUDE_CODE_OAUTH_TOKEN
+            export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC="1"
             echo "::notice::Routing through custom gateway ($BASE)"
           else
             echo "::notice::Using direct Anthropic API"
@@ -541,8 +543,10 @@ jobs:
             fi
             [ -n "$BASE" ] && export ANTHROPIC_BASE_URL="$BASE"
             KEY="${CUSTOM_API_KEY:-${ANTHROPIC_API_KEY:-}}"
-            [ -n "$KEY" ] && export ANTHROPIC_API_KEY="$KEY"
+            [ -n "$KEY" ] && export ANTHROPIC_AUTH_TOKEN="$KEY"
+            unset ANTHROPIC_API_KEY
             unset CLAUDE_CODE_OAUTH_TOKEN
+            export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC="1"
           fi
 
           # Read and truncate skill output for analysis
@@ -647,8 +651,10 @@ jobs:
             fi
             [ -n "$BASE" ] && export ANTHROPIC_BASE_URL="$BASE"
             KEY="${CUSTOM_API_KEY:-${ANTHROPIC_API_KEY:-}}"
-            [ -n "$KEY" ] && export ANTHROPIC_API_KEY="$KEY"
+            [ -n "$KEY" ] && export ANTHROPIC_AUTH_TOKEN="$KEY"
+            unset ANTHROPIC_API_KEY
             unset CLAUDE_CODE_OAUTH_TOKEN
+            export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC="1"
           fi
           for pending in dashboard/outputs/.pending-*.md; do
             [ -f "$pending" ] || continue
