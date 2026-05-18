@@ -203,7 +203,7 @@ chains:
   #     - skill: daily-routine, consume: [token-movers, paper-pick, github-issues, hacker-news-digest]
 
 # Default model for all skills. Override per-run via workflow_dispatch.
-model: glm-5-turbo
+model: claude-sonnet-4-6
 
 # AI Gateway — route Claude Code requests through an LLM gateway.
 # provider: direct (default, uses ANTHROPIC_API_KEY) | bankr (uses BANKR_LLM_KEY) | custom (uses CUSTOM_BASE_URL + CUSTOM_API_KEY)
